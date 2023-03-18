@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>Dynamic Website</title>
+</head>
+
+<body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  {{>navbar data=detailing}}
+  {{!-- data=detailing:- all the data of detailing will go to this data variable --}}
+  {{>slides slider=sliders}}
+
+
+  {{!-- banner 1 section --}}
+  <section class="banner1_Section backGround1">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{Banner1.title}}</h1>
+          <p>{{Banner1.detail}}</p>
+          <button class="btn-outline-primary">Start Learning</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  {{!-- services section --}}
+  <section id="services_section" class="py-4 backGround1">
+    <div class="container">
+      <h1 class="text-center text-secondary">Services that we provide</h1>
+      <div class="row mt-5">
+        {{#each service}}
+        <div class="col-md-4 mt-5">
+          {{!-- col-md-4:- to devide the grid of 12 to 3 --}}
+          <div class="card">
+            <div class="card-body">
+              <div class="container text-center py-3">
+                <i class="{{this.icon}} service-icon text-secondary"></i>
+              </div>
+              <h3 class="card-title">{{this.title}}</h3>
+              <p>{{this.description}}</p>
+              <a href="{{this.linkText}}">{{this.link}}</a>
+              <a href="#!" class="ml-3">support</a>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+
+  {{!-- banner 2 section --}}
+
+  
+  <section class="banner2_section py-4 backGround1">
+    <div class="conatainer">
+      <div class="row text-center">
+        <div class="col-md-6 py-4">
+          {{!-- left side --}}
+          <h3>{{Banner2.title}}</h3>
+          <p>{{Banner2.detail}}</p>
+          <button class="btn btn-primary">Click here</button>
+        </div>
+        <div class="col-md-6">
+          {{!-- right side --}}
+          <img src="{{Banner2.image1}}" class="img-fluid" alt="" style="height: 200px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {{!-- banner 3 section --}}
+
+  <section class="banner2_section py-4 backGround1">
+    <div class="conatainer">
+      <div class="row text-center">
+        <div class="col-md-6 py-4">
+          {{!-- left side --}}
+          <img src="{{Banner3.image2}}" class="img-fluid" alt="" style="height: 200px;">
+        </div>
+        <div class="col-md-6">
+          {{!-- right side --}}
+          <h3>{{Banner3.title}}</h3>
+          <p>{{Banner3.detail}}</p>
+          <button class="btn btn-primary">Click here</button>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  {{!-- Contact us section --}}
+
+  <section id="contact_us_section" class="py-5 backGround1">
+    <div class="container">
+      <h3 class="text-center text-secondary" >Contact Us</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form action="/process-contact-form" method="post">
+          {{!-- method:- The HTTP method that the browser uses to submit the form. --}}
+            {{!-- action:- it tells the place where our form will go after clicking submit --}}
+            {{!-- whenever we will click submit all the info will go to 
+            /process-contact-form --}}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"> Your Email Address</label>
+              <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              {{!-- name="email :- this name is very importent because with this name
+              we will be able to identify our data" --}}
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="contactNumberField" class="form-label">Your Conatct Number</label>
+              <input name="phone" type="number" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="form-floating my-2">
+              <textarea name="query" style="height: 250px;" class="form-control" placeholder="Enter your query here..." id="queryField" style="height: 100px"></textarea>
+              <label for="queryField">Your Query</label>
+            </div>
+            
+            <div class="container text-center">
+              <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{{!-- about section --}}
+
+<section id="about_us_section" class="about_Section py-5 text-center">
+  <div class="conatiner">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>{{About.title}}</h3>
+        <p>{{About.detail}}</p>
+        <button class="btn btn-success btn-lg">
+          Contact Us
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+
+</html>

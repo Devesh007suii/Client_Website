@@ -1,0 +1,31 @@
+<nav class="backGround1 py-4 border-bottom navbar navbar-expand-lg navbar-dark ">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+        <img src="{{data.brandIconUrl}}" alt="" style="border-radius: 50%;" width="40" height="40">
+        {{!-- style="border-radius: 50%;":- to make it circle --}}
+        {{data.brandName}}
+        </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {{!-- me-auto:- me is for margin end and auto means it will go to left --}}
+        {{!-- ms-auto:- ms means margin start, so it will get placed in right side --}}
+
+        {{#each data.links}}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{this.url}}">{{this.label}}</a>
+        </li>
+
+        {{/each}}
+
+        {{!-- we are using #each for while loop and we wrote data.links
+        so that data.links will get repeat each object --}}
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
